@@ -12,8 +12,8 @@
 </ul>
 
 <h3>Back-End</h3>
-  <p>Coming Soon</p>
+  <p>   Coming Soon...</p>
   
-<h3>Project/h3>
-  <p>Coming Soon</p>
+<h3>Project</h3>
+  <p>   Coming Soon...</p>
 
