@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id="mainmaincon"></div>
+    <script>
+
+        let maincon = document.getElementById("mainmaincon");
+
+        let subcon = document.createElement("div");
+        subcon.setAttribute("style", "height:75px;");
+
+        let header = document.createElement("h2");
+        header.innerText = "Exercise04: JavaScript&DOM";
+
+        let button = document.createElement("button");
+
+        subcon.appendChild(header);
+        subcon.appendChild(button);
+
+        const time = new Date();
+
+        button.innerText = "Click me to display Date and Time";
+        let isMove = false;
+
+        let personal = document.createElement("p");
+        personal.innerHTML = "<a href='#'>Personal Info</a>";
+        personal.style.width = "fit-content";
+        personal.firstChild.style.color = 'pink';
+
+        let info = document.createElement("ul");
+        info.innerHTML = "<li>Safireen Tokanee,ID: 64010192</li> <li>Subject: WEB APPLICATION DEVELOPMENT</li> <li>Semester: 2</li>"
+        info.style.display = "none";
+
+        let snapshot = document.createElement("h1");
+        snapshot.innerText = "Snapshot";
+
+        let choice = document.createElement("ul");
+        choice.innerHTML = "<li onclick = changeImage('Firework')><a href='#'>Firework</a></li> <li onclick = changeImage('Crest')><a href='#'>Crest</a></li> <li onclick = changeImage('Action')><a href='#'>Action</a></li> <li onclick = changeImage('Buffalo')><a href='#'>Buffalo</a></li>"
+
+        let image = document.createElement("img")
+        image.src = "https://upload.wikimedia.org/wikipedia/commons/4/4e/Kmitl.jpg"
+
+        //append to maincon
+        maincon.appendChild(subcon);
+        maincon.appendChild(personal);
+        maincon.appendChild(info);
+        maincon.appendChild(snapshot);
+        maincon.appendChild(choice);
+        maincon.appendChild(image);
+
+        //function
+        let changeImage = (key) => {
+            image.style.width = "500px"
+            if (key === "Firework") { image.src = 'https://www.ontariosciencecentre.ca/media/2098/fireworksheader3.jpg'; }
+            else if (key === "Crest") { image.src = 'https://www.creativefabrica.com/wp-content/uploads/2020/05/22/Royal-Crest-Coat-of-Arms-Graphics-4182626-1.png'; }
+            else if (key === "Action") { image.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Mookie_Betts_hitting_the_ball_%2836478781664%29.jpg/450px-Mookie_Betts_hitting_the_ball_%2836478781664%29.jpg'; }
+            else if (key === "Buffalo") { image.src = 'https://compote.slate.com/images/209ef3b5-7d52-432f-9b0f-b5b7208653aa.jpg?crop=3500%2C2333%2Cx0%2Cy0'; }
+        }
+
+        personal.onclick = () => {
+            if (info.style.display === "none") { info.style.display = "block"; }
+            else { info.style.display = "none"; }
+        }
+
+        personal.onmouseover = () => {
+            personal.style.backgroundColor = 'yellow';
+            personal.firstChild.style.color = '#551A8B';
+        }
+
+        personal.onmouseout = () => {
+            personal.style.backgroundColor = 'white';
+            personal.firstChild.style.color = 'pink';
+        }
+
+
+        let worker = new Worker("worker.js");
+        let colors = [];
+        let textColors = [];
+        let idx = 0;
+        let randColor;
+        for (let i = 0; i < 6; i++) {
+            randColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            colors.push(randColor);
+            randColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            textColors.push(randColor);
+        }
+
+        button.onclick = () => {
+
+            if (!isMove) {
+
+                worker.postMessage('start');
+                worker.onmessage = (event) => {
+
+                    if (idx === 5) { idx = 0; }
+                    else { idx = idx + 1; }
+
+                    console.log(colors[idx]);
+                    button.setAttribute("style", "position: fixed; right: 0px; left: auto; top: 0px; margin: auto;");
+                    button.innerText = event.data.time;
+                    button.style.backgroundColor = colors[idx];
+                    button.style.color = textColors[idx];
+                }
+                isMove = true;
+            }
+            else {
+                worker.postMessage('stop');
+                button.setAttribute("style", "position: null");
+                button.style.backgroundColor = colors[idx];
+                button.style.color = textColors[idx];
+                isMove = false;
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
