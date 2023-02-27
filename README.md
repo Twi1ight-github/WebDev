@@ -2,9 +2,9 @@
 
 <h3>Table of Content</h3>
 <ul>
-  <li>Ex001 (HTML)</li>
-  <li>Ex002 (CSS)</li>
-  <li>Ex003 (Bootstrap)</li>
-  <li>Ex004 (Java Script & Web Worker)</li>
-  <li>Ex005 (React Callback Function)</li>
+  <li><a href="https://github.com/rootkidx/WebDev/tree/main/ex001">Ex001 (HTML)</a></li>
+  <li><a href="https://github.com/rootkidx/WebDev/tree/main/ex002">Ex002 (CSS)</a></li>
+  <li><a href="https://github.com/rootkidx/WebDev/tree/main/ex003">Ex003 (Bootstrap)</a></li>
+  <li><a href="https://github.com/rootkidx/WebDev/tree/main/ex004">Ex004 (Java Script & Web Worker)</a></li>
+  <li><a href="https://github.com/rootkidx/WebDev/tree/main/ex005">Ex005 (React Callback Function)</a></li>
 </ul>
