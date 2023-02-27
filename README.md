@@ -1,8 +1,8 @@
 # 01076119 WEB APPLICATION DEVELOPMENT
 
-<h3>Table of Content</h3>
+<h2>Table of Content</h2>
 
-<h4>Front-End</h4>
+<h3>Front-End</h3>
 <ul>
   <li><a href="https://github.com/rootkidx/WebDev/tree/main/ex001">Ex001 (HTML)</a></li>
   <li><a href="https://github.com/rootkidx/WebDev/tree/main/ex002">Ex002 (CSS)</a></li>
